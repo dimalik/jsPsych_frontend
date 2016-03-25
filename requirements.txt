@@ -1,0 +1,13 @@
+beautifulsoup4==4.4.1
+csscompressor==0.9.4
+Django==1.6.4
+django-appconf==1.0.1
+django-compressor==2.0
+jedi==0.9.0
+lxml==3.6.0
+ply==3.8
+pyflakes==1.1.0
+rcssmin==1.0.6
+rjsmin==1.0.12
+six==1.10.0
+slimit==0.8.1

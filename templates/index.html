@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<!doctype html>
+<html>
+    <head>
+    <title>Aprendizaje de palabras</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static "js/jspsych/jspsych.js" %}"></script>
+    <script src="{% static "js/jspsych/plugins/jspsych-single-stim.js" %}"></script>
+
+    <link href="{% static "css/jspsych.css" %}" rel="stylesheet" type="text/css"></link>
+    </head>
+    <body>
+    </body>
+
+    <script>
+     var welcome_block = {
+	 type: 'single-stim',
+	 prompt: "<p>Bienvenido a este estudio lingüístico del Departamento de Lingüística Teórica y Aplicada de la Universidad de Cambridge, Inglaterra, realizado con la colaboración del Instituto Superior San Miguel de Córdoba, Argentina.</p><p>Presione cualquier tecla para comenzar con el estudio.</p>",
+     };
+
+     // var timeline = [].concat.apply([], timeline);
+     jsPsych.init({
+	 timeline: [welcome_block]
+     });
+
+    </script>
+    
+</html>
