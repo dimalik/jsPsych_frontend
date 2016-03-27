@@ -1,11 +1,15 @@
 from django.db import models
+import json
 
 class KeyCode(models.Model):
     key = models.CharField(max_length=255)
     code = models.IntegerField()
 
-    def __unicode__(self):
-        return "<{}>: {}".format(self.key, self.code)
+    def __repr__(self):
+        return self.code
+
+    # def __unicode__(self):
+    #     return "<{}>: {}".format(self.key, self.code)
 
 class AbstractJSPsychPlugin(models.Model):
 
@@ -18,6 +22,14 @@ class AbstractJSPsychPlugin(models.Model):
         help_text='A callback function to execute \
         when the trial finishes. The function is going \
         to be eval\'d at runtime so be careful before using this.')
+
+    def to_json(self):
+        fieldnames = [field.name for field in self._meta.fields
+                      if not field.name == 'id']
+        fieldvalues = [getattr(self, fieldname) for fieldname in fieldnames]
+        return json.dumps({fieldname: fieldvalue
+                           for fieldname, fieldvalue in
+                           zip(fieldnames, fieldvalues)})
 
     class Meta:
         abstract = True
